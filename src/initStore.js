@@ -4,8 +4,11 @@ import { routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import reducer from './reducers';
 
-import authChecker from './middlewares/authChecker';
 import routeChecker from './middlewares/routeChecker';
+import errorHandler from './middlewares/errorHandler';
+import sessionStorage from './middlewares/sessionStorage';
+import talkEngine from "./middlewares/talkEngine";
+import homepage from "./middlewares/homepage";
 
 const initStore = (initialState) => {
   const history = createHistory();
@@ -16,7 +19,7 @@ const initStore = (initialState) => {
     store: createStore(
       reducer,
       initialState,
-      composeEnhancers(applyMiddleware(routeChecker, authChecker, reduxThunk, routerMid)),
+      composeEnhancers(applyMiddleware(sessionStorage, errorHandler, routeChecker, talkEngine, homepage, reduxThunk, routerMid)),
     ),
     history,
   };

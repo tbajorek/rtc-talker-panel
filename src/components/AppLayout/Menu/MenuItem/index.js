@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Menu } from 'antd';
-import userChecker from '../../../../utils/userChecker';
-import { routesData } from '../../../../routes';
+import { Menu, Icon } from 'antd';
 
-const MenuItem = ({ name, text, loggedUser, ...props }) => (
-  userChecker(loggedUser, routesData[name]) ?
-    <Menu.Item {...props}>
-      <Link to={routesData[name].path}>{text}</Link>
-    </Menu.Item>
-    : null
+const MenuItem = ({ route, text, icon, action, ...props }) => (
+    <Link to={route.path}>
+        <Menu.Item {...props}>
+            { icon ? <Icon type={icon} /> : null }
+            <span style={{color: 'rgba(255, 255, 255, 0.65)'}}>
+                {text}
+            </span>
+        </Menu.Item>
+    </Link>
 );
 
 MenuItem.propTypes = {
-  name: PropTypes.string.isRequired,
+  route: PropTypes.object.isRequired,
   text: PropTypes.string.isRequired,
-  loggedUser: PropTypes.object.isRequired,
+  icon: PropTypes.string,
 };
 
 export default MenuItem;

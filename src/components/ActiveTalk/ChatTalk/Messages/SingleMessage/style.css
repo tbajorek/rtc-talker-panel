@@ -1,0 +1,21 @@
+.chat-area .single-message {
+  margin-top: 5px;
+  border-bottom: 1px solid #ededed;
+}
+.chat-area .single-message:first-child {
+  margin-top: 0;
+}
+.chat-area .single-message .main {
+  display: flex;
+}
+.chat-area .single-message .footer {
+  display: flex;
+}
+.chat-area .single-message .footer .menu-filler {
+  flex: 1;
+}
+.chat-area .single-message .footer .message-date {
+  font-size: 11px;
+  color: gray;
+}
+/*# sourceMappingURL=style.css.map */

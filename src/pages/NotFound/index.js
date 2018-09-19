@@ -6,4 +6,6 @@ const NotFound = () => (
     </div>
 );
 
+NotFound.title = 'Brak strony';
+
 export default NotFound;

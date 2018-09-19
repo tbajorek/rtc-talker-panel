@@ -1,0 +1,15 @@
+.availability-type {
+  font-size: 26px;
+  color: #cc2400;
+}
+.availability-type.checked {
+  color: #017712;
+}
+.availability-buttons {
+  margin-top: 25px;
+  text-align: center;
+}
+.online-switch {
+  margin-bottom: 15px;
+}
+/*# sourceMappingURL=style.css.map */

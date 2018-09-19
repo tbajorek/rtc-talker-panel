@@ -5,10 +5,11 @@ import { LocaleProvider, Layout } from 'antd';
 import pl_PL from 'antd/lib/locale-provider/pl_PL';
 import Menu from './Menu';
 import './style.less';
+import InitCallModal from "../../containers/InitCallModal";
 
 const { Sider, Content, Footer } = Layout;
 
-const AppLayout = ({ children, loggedUser, location, currentRoute, currentRouteName }) => (
+const AppLayout = ({ children, loggedUser, currentRouteName}) => (
   <LocaleProvider locale={pl_PL}>
     <Layout className="app-root">
       <Sider breakpoint="lg" collapsedWidth="0" className="rtc-talker-side">
@@ -17,8 +18,9 @@ const AppLayout = ({ children, loggedUser, location, currentRoute, currentRouteN
       </Sider>
       <Layout className="app-content-wrapper">
         <Content className="app-content">
-          {React.cloneElement(children, { location })}
+          {React.cloneElement(children, {})}
         </Content>
+          <InitCallModal/>
         <Footer style={{ textAlign: 'center' }}>
             RTC-Talker &copy; 2018 Tomasz Bajorek
         </Footer>

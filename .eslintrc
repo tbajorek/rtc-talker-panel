@@ -1,3 +1,19 @@
 {
-  "extends": "airbnb"
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": "airbnb",
+  "ecmaFeatures": {
+    "experimentalObjectRestSpread": true,
+    "spread": true,
+    "jsx": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  }
 }

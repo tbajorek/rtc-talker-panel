@@ -7,6 +7,7 @@ import AppLayout from '../AppLayout';
 import { routes } from '../../routes';
 import initStore from '../../initStore';
 import NotFound from '../../pages/NotFound';
+import PageMeta from '../../hoc/PageMeta';
 
 import './styles.less';
 
@@ -18,7 +19,7 @@ const App = () => (
             <AppLayout>
                 <Switch>
                     {routes}
-                    <Route component={NotFound} />
+                    <Route component={PageMeta(NotFound)} />
                 </Switch>
             </AppLayout>
         </ConnectedRouter>

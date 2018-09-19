@@ -1,0 +1,36 @@
+.chat-area .message-input {
+  display: flex;
+  align-items: flex-end;
+}
+.chat-area .message-input .input-prefix {
+  left: 0;
+}
+.chat-area .message-input .input-prefix .ant-btn {
+  border-radius: 0;
+}
+.chat-area .message-input .ant-input {
+  padding: 1px;
+  flex: 1;
+  border-radius: 0;
+  min-height: 32px !important;
+}
+.chat-area .message-input .input-suffix {
+  right: 0;
+}
+.chat-area .message-input .input-suffix .ant-btn {
+  border-radius: 0;
+}
+.chat-area .message-input .send-message-button {
+  background-color: #00816a;
+  color: #dffffb;
+  border-color: #0b5749;
+  width: 33px;
+}
+.chat-area .message-input .send-message-button:hover {
+  font-weight: bold;
+  border-color: #0bad90;
+}
+.chat-area #fileInput {
+  display: none;
+}
+/*# sourceMappingURL=style.css.map */

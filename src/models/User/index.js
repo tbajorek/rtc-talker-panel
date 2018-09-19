@@ -1,44 +1,81 @@
-import uuidv4 from 'uuid';
+import uuidv4 from 'uuid/v4';
 
-import { Roles } from '../../routes';
+import {User as UserModel} from 'tbrtc-common/model/User';
+import {Roles} from '../../routes';
 
-class UserModel {
-  constructor(id, username, email, avatar, token, role) {
-    this._id = id;
-    this._username = username;
-    this._email = email;
-    this._avatar = avatar;
-    this._token = token;
-    this._role = role;
-  }
+class User extends UserModel {
+    constructor(id, name, surname, email, avatar, token, role, address, company, departments, availability, validUntil) {
+        super(id, name, surname, email, avatar);
+        this._name = name;
+        this._surname = surname;
+        this._email = email;
+        this._avatar = avatar;
+        this._token = token;
+        this._role = role;
+        this._address = address;
+        this._company = company;
+        this._departments = departments;
+        this._availability = availability;
+        this._validUntil = validUntil;
+        this._exposedFields = ['id', 'name', 'surname', 'email', 'avatar', 'token', 'role', 'address', 'company', 'departments', 'availability', 'validUntil', 'connectionId'];
+        this._securedFields = ['token'];
+    }
 
-  get id() {
-    return this._id;
-  }
+    get name() {
+        return this._name;
+    }
 
-  get username() {
-    return this._username;
-  }
+    get surname() {
+        return this._surname;
+    }
 
-  get email() {
-    return this._email;
-  }
+    get email() {
+        return this._email;
+    }
 
-  get avatar() {
-    return this._avatar;
-  }
+    get avatar() {
+        return this._avatar;
+    }
 
-  get token() {
-    return this._token;
-  }
+    get token() {
+        return this._token;
+    }
 
-  get role() {
-    return this._role;
-  }
+    get role() {
+        return this._role;
+    }
 
-  static createGuest() {
-    return new UserModel(uuidv4(), 'Guest', null, null, null, Roles.GUEST);
-  }
+    get address() {
+        return this._address;
+    }
+
+    get company() {
+        return this._company;
+    }
+
+    get departments() {
+        return this._departments;
+    }
+
+    get availability() {
+        return this._availability;
+    }
+
+    get validUntil() {
+        return this._validUntil;
+    }
+
+    isValid() {
+        return this.validUntil === null || (new Date(this.validUntil)).getTime() > (new Date()).getTime();
+    }
+
+    static createGuest() {
+        return new User(uuidv4(), 'Guest', null, null, null, null, Roles.GUEST, null, null, [], [], null);
+    }
+
+    static _createEmpty() {
+        return User.createGuest();
+    }
 }
 
-export default UserModel;
+export default User;

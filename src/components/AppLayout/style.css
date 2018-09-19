@@ -1,7 +1,56 @@
-.rtc-talker-side .rtc-talker-logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-  color: white;
+* {
+  box-sizing: border-box;
+}
+#root {
+  height: 100%;
+}
+.app-root {
+  height: 100%;
+}
+.app-root .rtc-talker-side {
+  height: 100%;
+}
+.app-root .rtc-talker-side .rtc-talker-logo {
+  padding: 24px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 2em;
+}
+.app-root .app-content-wrapper {
+  height: 100%;
+}
+.app-root .app-content-wrapper .app-content {
+  padding: 24px 50px;
+  display: flex;
+  flex: 1 0 auto;
+}
+.app-root .app-content-wrapper .app-content h1 {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+.app-root .app-content-wrapper .app-content ul {
+  background-color: transparent !important;
+}
+.app-root .app-content-wrapper .app-content .centered-page {
+  width: 100%;
+  min-width: 200px;
+  max-width: 500px;
+  margin: auto;
+}
+.app-root .app-content-wrapper .app-content .normal-page {
+  width: 100%;
+  position: relative;
+}
+.avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+.avatar-container .ant-avatar {
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 0 5px 1px #555;
 }
 /*# sourceMappingURL=style.css.map */

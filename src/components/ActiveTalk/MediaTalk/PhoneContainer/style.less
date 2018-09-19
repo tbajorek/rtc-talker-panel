@@ -1,0 +1,33 @@
+.media-container {
+  .phone-container {
+    background-color: #dbdbdb;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    @-webkit-keyframes phoneAnimation {
+      0%   {background-color: #003451;}
+      50%  {background-color: #004c51;}
+      100% {background-color: #003451;}
+    }
+
+    @keyframes phoneAnimation {
+      0%   {background-color: #003451;transform:scale(1);}
+      50%  {background-color: #00576f;transform:scale(1.2);}
+      100% {background-color: #003451;transform:scale(1);}
+    }
+
+    .ant-avatar {
+      margin: auto;
+      background-color: #003451;
+      -webkit-animation-name: phoneAnimation;
+      -webkit-animation-duration: 4s;
+      -webkit-animation-iteration-count:infinite;
+      animation-name: phoneAnimation;
+      animation-duration: 4s;
+      animation-iteration-count:infinite;
+    }
+  }
+}

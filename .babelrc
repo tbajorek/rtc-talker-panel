@@ -3,11 +3,11 @@
         [
             "env",
             {
-                "modules": false
+                "modules": false,
+                "exclude": ["transform-es2015-classes"]
             }
         ],
-        "react",
-        "stage-0"
+        "react"
     ],
     "plugins": [
         [
@@ -16,17 +16,23 @@
                 "libraryName": "antd",
                 "style": true
             }
-        ]
+        ],
+        ["transform-decorators-legacy"],
+        ["transform-object-rest-spread"],
+        ["transform-es2015-destructuring"],
+        ["transform-class-properties"]
     ],
     "env": {
         "test": {
             "presets": [
                 [
                     "env",
-                    "stage-0"
+                    "stage-0",
+                    [ "es2015", { "modules": false } ]
                 ],
                 "react"
             ]
         }
-    }
+    },
+    "ignore": "node_modules"
 }

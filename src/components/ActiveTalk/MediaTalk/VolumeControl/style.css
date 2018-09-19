@@ -1,0 +1,35 @@
+.media-talk .talker-volume {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5px;
+  margin-top: 6px;
+}
+.media-talk .talker-volume .volume-button {
+  margin-left: 5px;
+}
+.media-talk .talker-volume .volume-slider {
+  width: 180px;
+  margin-left: 10px;
+}
+.media-talk .talker-volume .volume-slider .ant-slider-step {
+  background-color: #9595954d;
+}
+.media-talk .talker-volume .volume-slider .ant-slider-track {
+  background-color: #54beff;
+}
+.media-talk .talker-volume .on {
+  color: #00a500;
+  border-color: #00a500;
+}
+.media-talk .talker-volume .on:hover {
+  color: #00d200;
+  border-color: #00d200;
+}
+.media-talk .talker-volume .off {
+  color: #a50001;
+  border-color: #a50001;
+}
+.media-talk .talker-volume .off:hover {
+  color: #d20001;
+}
+/*# sourceMappingURL=style.css.map */

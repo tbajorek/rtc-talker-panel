@@ -1,0 +1,10 @@
+.file-transfer-notification .ant-notification-notice-message {
+  color: #00528d;
+}
+.file-transfer-notification .transferred-filename {
+  font-weight: bold;
+}
+.file-transfer-notification .transferred-filesize {
+  font-style: italic;
+}
+/*# sourceMappingURL=style.css.map */

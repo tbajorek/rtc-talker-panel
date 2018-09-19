@@ -1,19 +1,15 @@
 import { connect } from 'react-redux';
-import { getLocation } from '../../reducers';
-import { getCurrentRoute, getCurrentRouteName } from '../../reducers/route';
+import { withRouter } from 'react-router'
+import { getLoggedUser } from '../../reducers/loggedUser';
 import AppLayout from '../../components/AppLayout';
-import UserModel from '../../models/User';
 
 
 const mapStateToProps = state => ({
-  location: getLocation(state),
-  currentRoute: getCurrentRoute(state),
-  currentRouteName: getCurrentRouteName(state),
-  loggedUser: UserModel.createGuest(),
+  loggedUser: getLoggedUser(state)
 });
 
 const mapDispatchToProps = {
 
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppLayout);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppLayout));

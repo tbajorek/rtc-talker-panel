@@ -1,0 +1,8 @@
+.chat-area .message-list {
+  flex: 1;
+  overflow: auto;
+  padding-right: 4px;
+  padding-left: 2px;
+  background-color: #eaeaea;
+}
+/*# sourceMappingURL=style.css.map */

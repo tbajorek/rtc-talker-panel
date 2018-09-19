@@ -14,12 +14,12 @@ const PageMeta = (WrappedComponent) => {
   return class extends React.Component {
     render() {
       return (
-        <div>
-          <Helmet key="helmet" titleTemplate="%s | Panel administracyjny RTC-Talker">
-            {helmetProps}
-          </Helmet>
-          <WrappedComponent {...this.props} />
-        </div>
+          <React.Fragment>
+            <Helmet key="helmet" titleTemplate="%s | Panel administracyjny RTC-Talker">
+              {helmetProps}
+            </Helmet>
+            <WrappedComponent {...this.props} />
+          </React.Fragment>
       );
     }
   };
