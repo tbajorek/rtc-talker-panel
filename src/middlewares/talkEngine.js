@@ -142,7 +142,7 @@ export default store => next => (action) => {
             if (action.payload.online) {
                 tbRtcClient = new TbRtcClient({
                     signaling: {
-                        server: __SIGNALING_SERVER_URL__,
+                        server: process.env.SIGNALING_SERVER_URL,
                         debug: {
                             recvMessages: true
                         }
