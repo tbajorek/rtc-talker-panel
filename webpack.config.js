@@ -2,6 +2,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const root = require('app-root-path');
+const Dotenv = require('dotenv-webpack');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 const htmlPlugin = new HtmlWebPackPlugin({
@@ -10,8 +11,6 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 const definePlugin = new webpack.DefinePlugin({
-    '__BACKEND_SERVER_URL__': JSON.stringify('http://localhost/'),
-    '__SIGNALING_SERVER_URL__': JSON.stringify('ws://0.0.0.0:9876'),
     '__LOCALE_DIR__': JSON.stringify(root + "/node_modules/tbrtc-client/src/locale")
 });
 
@@ -63,12 +62,13 @@ module.exports = {
                         options: {
                             javascriptEnabled: true,
                         },
+
                     },
                 ],
             },
         ],
     },
-    plugins: [htmlPlugin, definePlugin, namedPlugin, errorOverlay],
+    plugins: [htmlPlugin, new Dotenv(), definePlugin, namedPlugin, errorOverlay],
     devServer: {
         historyApiFallback: true,
     },
