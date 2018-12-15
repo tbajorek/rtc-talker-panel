@@ -1,6 +1,6 @@
 {
   "name": "rtc-talker-panel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -17,6 +17,7 @@
     "babel-polyfill": "^6.26.0",
     "blueimp-md5": "^2.10.0",
     "cross-fetch": "^2.2.2",
+    "dotenv-webpack": "^1.5.7",
     "emote-icons": "^1.0.3",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
