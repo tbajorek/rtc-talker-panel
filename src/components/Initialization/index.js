@@ -12,13 +12,13 @@ const Step = Steps.Step;
 const Initialization = ({loggedUser, step, addMyAddress, addMyCompany}) => {
     const steps = [
         {
-            title: 'Address',
+            title: 'Adres',
             role: Roles.USER,
             content: <AddressForm onSave={(street, building_number, post_code, city, country, phone) => addMyAddress(loggedUser.token, street, building_number, post_code, city, country, phone)}/>,
             icon: 'home'
         },
         {
-            title: 'Company',
+            title: 'Firma',
             role: Roles.MANAGER,
             content: <CompanyStep loggedUser={loggedUser} addMyCompany={addMyCompany}/>,
             icon: 'bank',
