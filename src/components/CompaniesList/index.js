@@ -10,7 +10,6 @@ import userChecker from "../../utils/userChecker";
 class CompaniesList extends React.Component {
     _prepareColumns() {
         const {loggedUser, setActivated} = this.props;
-        console.log(setActivated);
         return [{
             title: 'Nazwa',
             key: 'name',

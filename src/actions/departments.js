@@ -36,7 +36,6 @@ export const getDepartmentsFailure = (data) => {
 };
 
 export const getDepartmentsList = (companyId, token) => (dispatch, getState) => {
-    console.log('requesting for departments');
     return Requester.get('/company/'+companyId+'/departments', 200, {companyId}, {
         request: getDepartmentsRequest,
         success: getDepartmentsSuccess,

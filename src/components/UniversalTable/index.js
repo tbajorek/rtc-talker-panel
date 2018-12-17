@@ -36,7 +36,6 @@ class UniversalTable extends React.Component {
 
     _getUniqueValues(dataSource, key) {
         const values = dataSource.reduce((a, b) => a.includes(b[key]) ? a : [...a, b[key]], []);
-        console.log(values);
         return dataSource.reduce((a, b) => a.includes(b[key]) ? a : [...a, b[key]], []);
     }
 

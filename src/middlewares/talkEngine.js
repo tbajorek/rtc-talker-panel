@@ -58,7 +58,7 @@ const initializeTbRTC = (action, store, tbRtc) => {
         store.dispatch(talkSessionStart(sessionId));
         tbRtc.sendDataToUser({task: 'session.join.ask', sessionId}, getRequestedUserId(store.getState()));
     });
-    tbRtc.isUserCommunication(data => {console.log(data);
+    tbRtc.isUserCommunication(data => {
         switch (data.details.task) {
             case 'session.create.request':
                 if (isOnline(store.getState()) && !isActiveRequest(store.getState())) {
