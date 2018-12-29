@@ -9012,9 +9012,9 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
-tbrtc-client@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/tbrtc-client/-/tbrtc-client-0.2.0.tgz#f3082766706073d9306846f640e5c8559a2f23e5"
+tbrtc-client@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/tbrtc-client/-/tbrtc-client-0.2.1.tgz#ad63f41b5997911692bd0b45630560bfb7fb7228"
   dependencies:
     app-root-path "^2.0.1"
     babel-core "^6.26.0"
@@ -9037,7 +9037,7 @@ tbrtc-client@^0.2.0:
     html-webpack-plugin "^2.30.1"
     react-a11y "^1.0.0"
     sdp-transform "^2.4.1"
-    tbrtc-common "^0.2.0"
+    tbrtc-common "^0.2.1"
     translations "^2.2.1"
     underscore "^1.8.3"
     uuid "^3.2.1"
@@ -9045,9 +9045,9 @@ tbrtc-client@^0.2.0:
     webrtc-adapter "^6.1.5"
     ws "^5.2.0"
 
-tbrtc-common@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/tbrtc-common/-/tbrtc-common-0.2.0.tgz#159c23daf7440a72e93528908cc24aaef14c2692"
+tbrtc-common@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/tbrtc-common/-/tbrtc-common-0.2.1.tgz#b6c3d6be090a559f4516d88cb1a078f43b76079d"
   dependencies:
     app-root-path "^2.0.1"
     babel-loader "^7.1.4"
