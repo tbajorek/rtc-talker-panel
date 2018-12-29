@@ -3,6 +3,7 @@ import Clipboard from 'react-clipboard.js';
 import { Input, Icon } from 'antd';
 import { routesData, Roles } from '../../../routes';
 import Messages from '../../../utils/Messages';
+import './style.less';
 
 const CopyReference = ({user}) => {
     if(user.role < Roles.MANAGER) {
