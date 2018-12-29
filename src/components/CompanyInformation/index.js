@@ -87,7 +87,7 @@ class CompanyInformation extends React.Component {
                     <Table columns={columns} dataSource={CompanyInformation.getDataFromCompany(company)} showHeader={false} pagination={false} />
                     {company.activated ? <CopyReference user={user} /> : null}
                 </Row>
-                <Row><AddressInformation token={currentUser.token} address={company.address} canDisplay={CompanyInformation.canDisplay(user, currentUser)} canEdit={CompanyInformation.canEdit(user, currentUser)} onSave={onSaveAddress}/></Row>
+                <Row><AddressInformation token={currentUser.token} address={company.address} canDisplay={CompanyInformation.canDisplay(user, currentUser)} canEdit={CompanyInformation.canEdit(user, currentUser) && user.role >= Roles.MANAGER} onSave={onSaveAddress}/></Row>
             </React.Fragment>
         );
     }
