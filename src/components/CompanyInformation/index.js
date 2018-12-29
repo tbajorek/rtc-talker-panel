@@ -7,6 +7,7 @@ import AddressInformation from "../AddressInformation";
 import CompanyForm from "./CompanyForm";
 import {Roles} from "../../routes";
 import {LOAD_COMPANY_SUCCESS} from "../../actions/company";
+import CopyReference from "./CopyReference";
 
 const columns = [{
     dataIndex: 'name',
@@ -52,6 +53,17 @@ class CompanyInformation extends React.Component {
         data.push(CompanyInformation.singleRowData(data, 'Aktywowana', <Icon type={activatedIcon} />));
         return data;
     }
+
+    /**
+     * Sprawdza alternatywne uprawnienia wyświetlania:
+     * 1. firma użytkownika
+     * 2. użytkownik zalogowany jest co najmniej managerem w firmie użytkownika profilu
+     * 3. użytkownik zalogowany jest co najmniej administratorem systemu
+     *
+     * @param user
+     * @param currentUser
+     * @return {boolean}
+     */
     static canDisplay(user, currentUser) {
         return user.id === currentUser.id
             || currentUser.role >= Roles.MANAGER && !!user.company && !!currentUser.company && user.company.id === currentUser.company.id
@@ -73,6 +85,7 @@ class CompanyInformation extends React.Component {
             <React.Fragment>
                 <Row className="user-information">
                     <Table columns={columns} dataSource={CompanyInformation.getDataFromCompany(company)} showHeader={false} pagination={false} />
+                    {company.activated ? <CopyReference user={user} /> : null}
                 </Row>
                 <Row><AddressInformation token={currentUser.token} address={company.address} canDisplay={CompanyInformation.canDisplay(user, currentUser)} canEdit={CompanyInformation.canEdit(user, currentUser)} onSave={onSaveAddress}/></Row>
             </React.Fragment>
