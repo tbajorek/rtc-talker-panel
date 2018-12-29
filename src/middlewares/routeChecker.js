@@ -26,6 +26,8 @@ export default store => next => (action) => {
                     store.dispatch(setInitializationStep(1));
                 } else if(!loggedUser.company && userChecker(loggedUser, {role: Roles.MANAGER})) {
                     store.dispatch(setInitializationStep(2));
+                } else {
+                    store.dispatch(setInitializationStep(3));
                 }
                 if(action.payload.pathname !== '/initialization') {
                     const initRoute = findRouteByName('initialization');

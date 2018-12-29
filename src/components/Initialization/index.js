@@ -24,7 +24,7 @@ const Initialization = ({loggedUser, step, addMyAddress, addMyCompany}) => {
             icon: 'bank',
         },
         {
-            title: 'Finish',
+            title: 'Koniec',
             role: Roles.USER,
             content: <Alert
                 message="Inicjalizacja zakończona"
