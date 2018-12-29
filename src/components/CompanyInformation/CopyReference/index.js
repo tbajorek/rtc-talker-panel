@@ -12,15 +12,15 @@ const CopyReference = ({user}) => {
     const foundUrl = location.href.match(regex);
     const fullUrl = foundUrl + routesData['sign-up'].path + '?companyId=' + user.company.id;
     return (
-        <div>
+        <div className="copyRefefence">
             <h3>Zaproszenie nowego pracownika</h3>
             <Input addonAfter={
                 <Clipboard component="button" data-clipboard-text={fullUrl} onSuccess={
                     () => Messages.success('Skopiowano', 'Link został skopiowany do schowka')
                 }>
-                    <Icon type="setting" />
+                    <Icon type="copy" />
                 </Clipboard>
-            } defaultValue={fullUrl} />
+            } defaultValue={fullUrl} onChange={(e) => e.preventDefault()} />
         </div>
     );
 };
