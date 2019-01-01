@@ -75,7 +75,7 @@ export const routesData = {
     'users-list': {
         component: UsersList,
         path: '/users-list',
-        roles: [Roles.USER, Roles.MANAGER, Roles.ADMIN],
+        roles: [Roles.MANAGER, Roles.ADMIN],
         menu: {
             title: "Użytkownicy",
             icon: 'solution'
