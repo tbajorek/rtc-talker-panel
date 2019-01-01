@@ -15,7 +15,7 @@ class FilterDropdown extends React.Component {
                     onPressEnter={() => onSearch(keyValue, selectedKeys, confirm)}
                 />
                 <Button type="primary" onClick={() => onSearch(keyValue, selectedKeys, confirm)}>Wyświetl</Button>
-                <Button onClick={() => onReset(keyValue, clearFilters)}>Wyczyść filter</Button>
+                <Button onClick={() => onReset(keyValue, clearFilters)}>Wyczyść filtr</Button>
             </div>
         );
     }
