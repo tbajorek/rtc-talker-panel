@@ -8,15 +8,15 @@ import './style.less';
 
 const OutgoingContent = ({author, content, className}) => (
     <div className="main">
-        <ExtendedAvatar className="message-avatar" user={author} />
         <div className={className}>{content}</div>
+        <ExtendedAvatar className="message-avatar" user={author} />
     </div>
 );
 
 const IncomingContent = ({author, content, className}) => (
     <div className="main">
-        <div className={className}>{content}</div>
         <ExtendedAvatar className="message-avatar" user={author} />
+        <div className={className}>{content}</div>
     </div>
 );
 
