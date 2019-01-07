@@ -24,14 +24,14 @@ import {
 
 const mapStateToProps = state => ({
     currentUser: getLoggedUser(state),
-    remoteUser: getRemoteUser(state) ? getRemoteUser(state) : new UserModel('12', 'Janusz', 'Biznesu', 'janusz@example.com', 'https://avatarmaker.com/svgavatars/temp-avatars/svgA6119304512517854.png'),
+    remoteUser: getRemoteUser(state),
     messages: getMessageList(state),
     domain: getUserDomain(state),
     siteUrl: getUserSiteUrl(state),
     talkType: getTalkType(state) ? getTalkType(state) : 'chat',
     mutedAudio: isMutedAudio(state),
     mutedVideo: isMutedVideo(state),
-    volumeLevel: getVolumeLevel(state)
+    volumeLevel: getVolumeLevel(state),
 });
 
 const mapDispatchToProps = {

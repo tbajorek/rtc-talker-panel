@@ -12,7 +12,7 @@ export default store => next => (action) => {
     const loggedUser = getLoggedUser(store.getState());
     switch(action.type) {
         case '@@router/LOCATION_CHANGE'://loading if saved
-            const fromStorage = localStorage.getItem(STORED_AUTH_KEY);
+            const fromStorage = localStorage.getItem(STORED_AUTH_KEY);console.log(store.getState());
             const isLoggedUser = isLogged(store.getState());
             if (fromStorage && !isLoggedUser) {
                 try {

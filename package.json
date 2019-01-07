@@ -41,7 +41,7 @@
     "redux-thunk": "^2.2.0",
     "redux-ui": "^0.1.1",
     "selector-lite": "^0.1.1",
-    "tbrtc-client": "^0.2.2",
+    "tbrtc-client": "^0.2.6",
     "tbrtc-common": "^0.2.1",
     "underscore": "^1.9.1",
     "url-join": "^4.0.0",

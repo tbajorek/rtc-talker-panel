@@ -6099,6 +6099,10 @@ moment@2.x, moment@^2.19.3, moment@^2.22.1:
   version "2.22.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
+moment@^2.23.0:
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.23.0.tgz#759ea491ac97d54bac5ad776996e2a58cc1bc225"
+
 moo@^0.4.3:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/moo/-/moo-0.4.3.tgz#3f847a26f31cf625a956a87f2b10fbc013bfd10e"
@@ -9012,9 +9016,9 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
-tbrtc-client@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/tbrtc-client/-/tbrtc-client-0.2.1.tgz#ad63f41b5997911692bd0b45630560bfb7fb7228"
+tbrtc-client@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/tbrtc-client/-/tbrtc-client-0.2.6.tgz#6e7433297d781645ce3cebb45e9cfbd69fcc6a7e"
   dependencies:
     app-root-path "^2.0.1"
     babel-core "^6.26.0"
@@ -9035,6 +9039,7 @@ tbrtc-client@^0.2.1:
     fnd "^0.3.3"
     fs "0.0.1-security"
     html-webpack-plugin "^2.30.1"
+    moment "^2.23.0"
     react-a11y "^1.0.0"
     sdp-transform "^2.4.1"
     tbrtc-common "^0.2.1"

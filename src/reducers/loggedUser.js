@@ -1,6 +1,5 @@
 import UserModel from '../models/User';
-import {LOAD_AUTH_DATA} from "../actions/auth";
-import {SIGN_OUT_SUCCESS} from "../actions/auth";
+import {LOAD_AUTH_DATA, SIGN_OUT_SUCCESS} from "../actions/auth";
 import {SAVE_MY_ADDRESS_SUCCESS} from "../actions/profile";
 import {CHANGE_AVAILABILITY_SUCCESS} from "../actions/availability";
 
@@ -27,14 +26,14 @@ const loggedUser = (state = initialState, action) => {
             );
             return model;
         case SIGN_OUT_SUCCESS:
-            return UserModel.createGuest();
+            return initialState;
         default:
             return state;
     }
 };
 
-export default loggedUser;
-
 export const getLoggedUser = (state) => state.loggedUser;
 export const getToken = (state) => state.loggedUser.token;
 export const isLogged = (state) => state.loggedUser.token !== null;
+
+export default loggedUser;

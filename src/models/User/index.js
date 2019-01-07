@@ -70,7 +70,7 @@ class User extends UserModel {
     }
 
     static createGuest() {
-        return new User(uuidv4(), 'Guest', null, null, null, null, Roles.GUEST, null, null, [], [], null);
+        return new User(uuidv4(), 'Gość', null, null, null, null, Roles.GUEST, null, null, [], [], null);
     }
 
     static _createEmpty() {

@@ -1,13 +1,13 @@
 import {
-    ACCEPT_TALK,
+    ACCEPT_TALK, BREAK_TALK,
     END_TALK, FILE_TRANSFER_FINISH, FILE_TRANSFER_START, FILE_TRANSFER_UPDATE,
     RECEIVE_CHAT_MESSAGE,
     REJECT_TALK,
     REQUEST_FOR_SESSION,
     REQUEST_FOR_TALK,
-    SEND_CHAT_MESSAGE, SET_ACTIVE_TALK, SET_FILE_INPUT,
+    SEND_CHAT_MESSAGE, SET_ACTIVE_TALK, SET_DOMAIN_INFO, SET_FILE_INPUT,
     SET_MUTED_AUDIO,
-    SET_MUTED_VIDEO,
+    SET_MUTED_VIDEO, SET_TALK_TYPE,
     SET_VIDEO,
     SET_VOLUME_LEVEL,
     STARTED_TALK,
@@ -38,19 +38,24 @@ const initialState = {
     mutedVideo: false,
     volumeLevel: 50,
     activeTalk: false,
-    finishing: false
+    finishing: false,
+    brokenTalk: false
 };
 
 const talk = (state = initialState, action) => {
     switch (action.type) {
         case REQUEST_FOR_SESSION:
             return {...state, sessionRequest: action.payload.userId};
+        case SET_DOMAIN_INFO:
+            return {...state, domain: action.payload.domain, siteUrl: action.payload.siteUrl};
         case TALK_SESSION_START:
             return {...state, sessionId: action.payload.sessionId};
         case TALK_SESSION_STOP:
             return {...initialState, finishing: true};
+        case SET_TALK_TYPE:
+            return {...state, type: action.payload.type};
         case REQUEST_FOR_TALK:
-            return {...state, requestObject: action.payload.request, remoteUser: action.payload.request.requestMessage.user, type: action.payload.type, talkRequest: true};
+            return {...state, requestObject: action.payload.request, remoteUser: action.payload.request.requestMessage.user, talkRequest: true};
         case ACCEPT_TALK:
             return {...state, loadingCall: true, requestObject: null, talkRequest: false};
         case REJECT_TALK:
@@ -94,6 +99,8 @@ const talk = (state = initialState, action) => {
             return {...state, fileInput: action.payload.fileInput};
         case SET_ACTIVE_TALK:
             return {...state, activeTalk: action.payload.activeTalk};
+        case BREAK_TALK:
+            return {...state, brokenTalk: true};
     }
     return state;
 };
@@ -120,6 +127,8 @@ export const getVolumeLevel = state => state.talk.volumeLevel;
 export const getFileInput = state => state.talk.fileInput;
 export const isActiveTalk = state => state.talk.activeTalk;
 export const isFinishing = state => state.talk.finishing;
+export const isBrokenTalk = state => state.talk.brokenTalk;
+export const hasFileInput = state => state.talk.fileInput !== null;
 
 export const getFileData = state => fileId => fileId in state.talk.files ? state.talk.files[fileId] : null;
 

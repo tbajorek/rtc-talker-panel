@@ -4,7 +4,7 @@ import {CHANGE_STATUS, CHANGE_STATUS_SUCCESS, setOnlineStatusSuccess} from "../a
 import {
     ACCEPT_TALK,
     acceptRequestedTalk,
-    anyTalkErrorOccured, endTalk,
+    anyTalkErrorOccured, breakTalk, endTalk,
     finishTransferFile,
     receiveChatMessage,
     REJECT_TALK,
@@ -13,7 +13,7 @@ import {
     requestForTalk,
     SEND_CHAT_MESSAGE,
     SET_FILE_INPUT,
-    SET_VIDEO, setActiveTalk,
+    SET_VIDEO, setActiveTalk, setDomainInfo, setTalkType,
     START_SELECTING_FILES,
     STARTED_TALK,
     startTransferFile, TALK_SESSION_STOP,
@@ -31,8 +31,8 @@ import {
     getLocalVideo, getRemoteVideo,
     getRequestedUserId,
     getRequestObject, getSessionId,
-    getTalkType,
-    isActiveRequest, isFinishing,
+    getTalkType, hasFileInput,
+    isActiveRequest, isBrokenTalk, isFinishing,
     isOnline
 } from "../reducers/talk";
 import ChatMessage from "../models/ChatMessage";
@@ -62,12 +62,16 @@ const initializeTbRTC = (action, store, tbRtc) => {
         switch (data.details.task) {
             case 'session.create.request':
                 if (isOnline(store.getState()) && !isActiveRequest(store.getState())) {
+                    store.dispatch(setTalkType(data.details.type));
+                    store.dispatch(setDomainInfo(data.details.domain, data.details.siteUrl));
+                    tbRtcClient.updateMediaConstraints(getConstraintsFromTalkType(getTalkType(store.getState())));
                     store.dispatch(requestForSession(data.sender.id));
                     tbRtc.startSession();
                 }
                 break;
             case 'session.close.request':
                 store.dispatch(talkStop());
+                Messages.success("Koniec rozmowy", `Rozmowa została zakończona przez zdalnego użytkownika`);
                 break;
         }
 
@@ -75,9 +79,10 @@ const initializeTbRTC = (action, store, tbRtc) => {
     tbRtc.isRequest((request) => {
         makeBeep();
         createNotification(request.requestMessage.user);
-        store.dispatch(requestForTalk(request, 'video'));
+        store.dispatch(requestForTalk(request));
     });
     tbRtcClient.isRequestStopped(() => {
+        store.dispatch(breakTalk());
         Messages.info("Przerwanie", `Żądanie rozmowy zostało przerwane`);
         store.dispatch(endTalk());
     });
@@ -102,7 +107,7 @@ const initializeTbRTC = (action, store, tbRtc) => {
     });
 
     tbRtc.isSessionUserLeft(data => {
-        Messages.error("Błąd", `Rozmowa została przerwana przez zdalnego użytkownika`);
+        Messages.info("Błąd", `Rozmowa została przerwana przez zdalnego użytkownika`);
         tbRtc.closeSession();
         store.dispatch(endTalk());
     });
@@ -122,15 +127,24 @@ const initializeTbRTC = (action, store, tbRtc) => {
     });
 };
 
-const getConstraintsFromAvailability = (availability) => {
-    const constraints = {};
-    if (availability.indexOf('video') >= 0) {
-        constraints.video = true;
+const getConstraintsFromTalkType = (type) => {
+    switch (type) {
+        case 'video':
+            return {
+                video: true,
+                audio: true
+            };
+        case 'audio':
+            return {
+                video: false,
+                audio: true
+            };
+        case 'chat':
+            return {
+                video: false,
+                audio: false
+            };
     }
-    if (availability.indexOf('audio') >= 0) {
-        constraints.audio = true;
-    }
-    return constraints;
 };
 
 let tbRtcClient = null;
@@ -157,13 +171,16 @@ export default store => next => (action) => {
                         ]
                     },
                     autoBindingMedia: false,
-                    debug: true
+                    debug: true,
+                    filesConfig: {
+                        hideInput: true
+                    }
                 });
                 initializeTbRTC(action, store, tbRtcClient);
                 tbRtcClient.isInitialized(() => {
                     const state = store.getState();
                     tbRtcClient.setCurrentUser(getLoggedUser(state));
-                    tbRtcClient.start(getConstraintsFromAvailability(getLoggedUser(state).availability));
+                    tbRtcClient.start();
                 });
                 window.tbRtc = tbRtcClient;
             } else {
@@ -183,7 +200,7 @@ export default store => next => (action) => {
         case ACCEPT_TALK:
             if (tbRtcClient !== null) {
                 requestObject = getRequestObject(store.getState());
-                if (typeof requestObject === 'object' && 'confirm' in requestObject) {
+                if (typeof requestObject === 'object' && requestObject !== null && 'confirm' in requestObject) {
                     requestObject.confirm();
                 }
             }
@@ -194,7 +211,8 @@ export default store => next => (action) => {
                 if (typeof requestObject === 'object' && 'reject' in requestObject) {
                     requestObject.reject();
                 }
-                tbRtcClient.closeSession();
+                Messages.info('Info', `Rozmowa została odrzucona`);
+                store.dispatch(breakTalk());
             }
             break;
         case SET_VIDEO:
@@ -212,7 +230,7 @@ export default store => next => (action) => {
             }
             break;
         case SET_FILE_INPUT:
-            if (tbRtcClient !== null) {
+            if (tbRtcClient !== null && !hasFileInput(store.getState())) {
                 tbRtcClient.addFileInput(action.payload.fileInput);
             }
             break;
@@ -230,7 +248,9 @@ export default store => next => (action) => {
         case TALK_SESSION_STOP: {
             const result = next(action);
             if (tbRtcClient !== null && tbRtcClient.hasSignalingConnection) {
-                tbRtc.closeSession();
+                if(!isBrokenTalk(store.getState())) {
+                    tbRtc.closeSession();
+                }
                 store.dispatch(endTalk());
             }
             return result;
