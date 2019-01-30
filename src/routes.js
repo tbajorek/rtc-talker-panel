@@ -12,21 +12,7 @@ import UsersList from './pages/UsersList';
 import DepartmentsList from './pages/DepartmentsList';
 import CompaniesList from './pages/CompaniesList';
 import Initialization from './pages/Initialization';
-
-export const Roles = {
-  get GUEST() {
-    return 1;
-  },
-  get USER() {
-    return 2;
-  },
-    get MANAGER() {
-    return 3;
-  },
-    get ADMIN() {
-    return 4;
-  }
-};
+import {Roles} from './roles';
 
 export const routesData = {
   'sign-in': {

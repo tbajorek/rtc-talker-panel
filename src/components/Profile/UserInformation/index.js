@@ -1,10 +1,9 @@
 import React from 'react';
-import {Row, Avatar, Table} from 'antd';
-import ui from 'redux-ui';
+import {Row, Table} from 'antd';
 import './style.less';
 import AddressInformation from "../../AddressInformation";
 import ExtendedAvatar from '../../ExtendedAvatar';
-import {Roles} from '../../../routes';
+import {Roles} from '../../../roles';
 
 const columns = [{
     dataIndex: 'name',

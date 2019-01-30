@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Select, Input, Form, Icon} from 'antd';
 import userChecker from "../../../../utils/userChecker";
-import {Roles} from "../../../../routes";
+import {Roles} from "../../../../roles";
 
 const Option = Select.Option;
 

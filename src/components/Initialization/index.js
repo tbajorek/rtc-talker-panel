@@ -2,7 +2,7 @@ import React from 'react';
 import { Steps, Alert } from 'antd';
 
 import './style.less';
-import {Roles} from "../../routes";
+import {Roles} from "../../roles";
 import AddressForm from "../AddressInformation/AddressForm";
 import userChecker from "../../utils/userChecker";
 import CompanyStep from "./CompanyStep";

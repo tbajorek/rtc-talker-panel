@@ -110,7 +110,7 @@ export const addMyCompanyRequest = (payload) => {
 };
 
 export const addMyCompanyFailure = (data) => {
-    return ActionCreator.createErrorAction(ADD_MY_COMPANY_FAILURE, { message: data.message, title: "Błąd ładowania listy firm" });
+    return ActionCreator.createErrorAction(ADD_MY_COMPANY_FAILURE, { message: data.message, title: "Błąd dodawania firmy" });
 };
 
 export const addMyCompanySuccess = (data) => {

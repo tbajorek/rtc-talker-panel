@@ -18,7 +18,7 @@ export const SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE';
 export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
 
 export const loadAuthData = (user, token) => {
-    return ActionCreator.createAction(LOAD_AUTH_DATA, { user, token });
+    return ActionCreator.createAction(LOAD_AUTH_DATA, { ...user, token });
 };
 
 export const signInRequest = (payload) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import UniversalTable from "../../../components/UniversalTable";
-import {Roles} from "../../../routes";
+import {Roles} from "../../../roles";
 
 import './style.less';
 import MyCompany from '../MyCompany';

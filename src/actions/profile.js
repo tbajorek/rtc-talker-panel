@@ -41,7 +41,7 @@ export const saveAddressRequest = (payload) => {
 };
 
 export const saveAddressFailure = (data) => {
-    return ActionCreator.createErrorAction(SAVE_ADDRESS_FAILURE, { message: data.message, title: "Błąd zmiany adresu użytkownika" });
+    return ActionCreator.createErrorAction(SAVE_ADDRESS_FAILURE, { message: data.message, title: "Błąd zmiany adresu" });
 };
 
 export const saveUserAddressSuccess = (data) => {

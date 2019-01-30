@@ -20,10 +20,10 @@ const auth = (state = initialState, action) => {
         case SIGN_IN_FAILURE:
             return {...state, loginLoading: false};
         case SIGN_UP_REQUEST:
-            return {...state, loginLoading: true};
+            return {...state, registerLoading: true};
         case SIGN_UP_SUCCESS:
         case SIGN_UP_FAILURE:
-            return {...state, loginLoading: false};
+            return {...state, registerLoading: false};
         default:
             return state;
     }

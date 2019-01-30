@@ -14,7 +14,6 @@ const initialState = {
     }
 };
 
-
 const departments = (state = initialState, action) => {
     switch (action.type) {
         case SET_NEW_DEP_MODAL_VISIBILITY:
@@ -27,7 +26,7 @@ const departments = (state = initialState, action) => {
         case GET_DEPARTMENTS_FAILURE:
             return {...state, data: {...state.data, [action.payload.companyId]: {loading: false}}};
         case ADD_DEPARTMENT_SUCCESS:
-            const newList = !!state.data[action.payload.companyId].list ? [...state.data[action.payload.companyId].list] : [];
+            const newList = (action.payload.companyId in state.data && !!state.data[action.payload.companyId].list) ? [...state.data[action.payload.companyId].list] : [];
             const {id, name, workers, key, companyId} = action.payload;
             newList.push({id, name, workers, key, companyId});
             return {...state, data: {...state.data, [action.payload.companyId]: {list: newList, loading: false}}};

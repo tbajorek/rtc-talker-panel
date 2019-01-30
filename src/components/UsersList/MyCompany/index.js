@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch} from 'antd';
 import UniversalTable from "../../../components/UniversalTable";
-import {Roles} from "../../../routes";
+import {Roles} from "../../../roles";
 import userChecker from "../../../utils/userChecker";
 
 import './style.less';

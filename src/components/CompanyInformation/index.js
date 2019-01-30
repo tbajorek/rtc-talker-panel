@@ -1,11 +1,10 @@
 import React from "react";
 import ui from "redux-ui";
-import {Alert, Spin, Avatar, Row, Table, Icon} from 'antd';
+import {Spin, Row, Table, Icon} from 'antd';
 import {SAVE_ADDRESS_SUCCESS} from "../../actions/profile";
-import {isCompany} from "../../reducers/companies";
 import AddressInformation from "../AddressInformation";
 import CompanyForm from "./CompanyForm";
-import {Roles} from "../../routes";
+import {Roles} from "../../roles";
 import {LOAD_COMPANY_SUCCESS} from "../../actions/company";
 import CopyReference from "./CopyReference";
 

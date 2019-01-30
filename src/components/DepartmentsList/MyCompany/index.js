@@ -1,7 +1,7 @@
 import React from 'react';
 import {Popconfirm, Button} from 'antd';
 import UniversalTable from "../../../components/UniversalTable";
-import {Roles} from "../../../routes";
+import {Roles} from "../../../roles";
 
 import './style.less';
 import NewDepartmentModal from "../NewDepartmentModal";

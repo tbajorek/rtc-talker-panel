@@ -1,7 +1,7 @@
 import uuidv4 from 'uuid/v4';
 
 import {User as UserModel} from 'tbrtc-common/model/User';
-import {Roles} from '../../routes';
+import {Roles} from '../../roles';
 
 class User extends UserModel {
     constructor(id, name, surname, email, avatar, token, role, address, company, departments, availability, validUntil) {

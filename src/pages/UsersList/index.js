@@ -2,7 +2,7 @@ import React from 'react';
 import MyCompanyContainer from '../../containers/UsersList/MyCompany';
 import AllCompaniesContainer from '../../containers/UsersList/AllCompanies';
 import DualTabs from "../../containers/DualTabs";
-import {Roles} from "../../routes";
+import {Roles} from "../../roles";
 
 const UsersList = ({}) => (
   <div className="normal-page">

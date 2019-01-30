@@ -1,5 +1,6 @@
 import { push } from 'react-router-redux';
-import {findRoute, defaultRoute, Roles, findRouteByName} from '../routes';
+import {findRoute, defaultRoute, findRouteByName} from '../routes';
+import {Roles} from "../roles";
 import { getLoggedUser } from '../reducers/loggedUser';
 import userChecker from '../utils/userChecker';
 import {SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS} from "../actions/auth";
