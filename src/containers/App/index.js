@@ -13,12 +13,14 @@ import './styles.less';
 
 const { store, history } = initStore();
 
+const actualRoutes = routes();
+
 const App = () => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <AppLayout>
                 <Switch>
-                    {routes}
+                    {actualRoutes}
                     <Route component={PageMeta(NotFound)} />
                 </Switch>
             </AppLayout>

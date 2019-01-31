@@ -4,6 +4,16 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const root = require('app-root-path');
 const Dotenv = require('dotenv-webpack');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
+
+const circularPlugin = new CircularDependencyPlugin({
+    // exclude detection of files based on a RegExp
+    exclude: /node_modules/,
+    // add errors to webpack instead of warnings
+    failOnError: true,
+    // set the current working directory for displaying module paths
+    cwd: process.cwd(),
+});
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: './src/index.html',
@@ -68,7 +78,7 @@ module.exports = {
             },
         ],
     },
-    plugins: [htmlPlugin, new Dotenv(), definePlugin, namedPlugin, errorOverlay],
+    plugins: [htmlPlugin, new Dotenv(), definePlugin, namedPlugin, errorOverlay, circularPlugin],
     devServer: {
         historyApiFallback: true,
     },

@@ -1,7 +1,7 @@
 import React from 'react';
 import Clipboard from 'react-clipboard.js';
 import { Input, Icon } from 'antd';
-import { routesData } from '../../../routes';
+import { getRoutes } from '../../../routes';
 import {Roles} from "../../../roles";
 import Messages from '../../../utils/Messages';
 import './style.less';
@@ -12,7 +12,7 @@ const CopyReference = ({user}) => {
     }
     const regex = /^(https?:\/\/[a-z.:0-9]*)/g;
     const foundUrl = location.href.match(regex);
-    const fullUrl = foundUrl + routesData['sign-up'].path + '?companyId=' + user.company.id;
+    const fullUrl = foundUrl + getRoutes()['sign-up'].path + '?companyId=' + user.company.id;
     return (
         <div className="copyRefefence">
             <h3>Zaproszenie nowego pracownika</h3>
