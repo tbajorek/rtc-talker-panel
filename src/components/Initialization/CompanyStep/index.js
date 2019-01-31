@@ -22,12 +22,12 @@ class CompanyStep extends Component {
                 <Row>
                     <Col span={18}>
                         <FormItem className="new-copmany-form-item">
-                            <Input value={name} placeholder="Nazwa" onChange={(e) => this.props.updateUI('name', e.target.value)} />
+                            <Input required={true} value={name} placeholder="Nazwa" onChange={(e) => this.props.updateUI('name', e.target.value)} />
                         </FormItem>
                     </Col>
                     <Col span={6}>
                         <FormItem className="new-copmany-form-item">
-                            <Input value={nip} placeholder="NIP" onChange={(e) => this.props.updateUI('nip', e.target.value)} />
+                            <Input required={true} value={nip} placeholder="NIP" onChange={(e) => this.props.updateUI('nip', e.target.value)} />
                         </FormItem>
                     </Col>
                 </Row>

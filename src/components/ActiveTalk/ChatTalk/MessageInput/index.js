@@ -39,7 +39,7 @@ class MessageInput extends React.Component {
             <React.Fragment>
                 <div className="message-input">
                     <MessageMenu startSelectingFiles={() => startSelectingFiles('fileInput')}/>
-                    <TextArea value={message} placeholder="Napisz wiadomość..." onChange={e => this.props.updateUI('message', e.target.value)} autosize={{ minRows: 1, maxRows: 4 }} onPressEnter={(e) => {
+                    <TextArea value={message} placeholder="Napisz wiadomość..." onChange={e => this.props.updateUI('message', e.target.value.replace(/<[^>]*>?/g, ''))} autosize={{ minRows: 1, maxRows: 4 }} onPressEnter={(e) => {
                         this.sendMessageFn(currentUser, message, sendMessage);
                         e.preventDefault();
                         e.stopPropagation();
